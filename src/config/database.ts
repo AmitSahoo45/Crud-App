@@ -21,12 +21,12 @@ class Database {
 
     private async connectToPostgreSQL() {
         this.sequelize = new Sequelize({
-            database: this.POSTGRES_DB,
-            username: this.POSTGRES_USER,
-            password: this.POSTGRES_PASSWORD,
-            host: this.POSTGRES_HOST,
-            port: this.POSTGRES_PORT,
-            // storage: this.POSTGRES_URL,
+            // database: this.POSTGRES_DB,
+            // username: this.POSTGRES_USER,
+            // password: this.POSTGRES_PASSWORD,
+            // host: this.POSTGRES_HOST,
+            // port: this.POSTGRES_PORT,
+            storage: this.POSTGRES_URL,
             dialect: "postgres",
             models: [Note]
         });
@@ -36,7 +36,7 @@ class Database {
             .then(() => {
                 console.log("PostgreSQL Connection has been established successfully.");
             })
-            .catch((err) => {
+            .catch((err: unknown) => {
                 console.error("Unable to connect to the PostgreSQL database:", err);
             });
     }
